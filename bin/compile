@@ -19,13 +19,11 @@ message "       Env-dir:   $3"
 message "-----> Current directory: $PWD"
 
 message "-----> Underlying file structure:"
-#ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 
 for dir in $PWD/*/
 do
-    dir1=${dir%*/}
-    echo "Dir: ${dir1##*/}"
-    for file in dir/{.,}*
+    for file in dir
     do
         echo $file
     done
