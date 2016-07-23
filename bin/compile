@@ -84,6 +84,9 @@ message "-----> Bob"
 pwd
 # app/tmp/cache
 ls
+# dart-sdk
+DART_BIN=`ls -l /dart-sdk/bin/dart`
+message "-----> Dart cmd found at $DART_BIN"
 message "-----> Bob"
 
 DART_BIN=`ls -l /app/dart-sdk/bin/dart`
