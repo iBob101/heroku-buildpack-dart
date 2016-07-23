@@ -81,14 +81,15 @@ cp -r $CACHE_DIR/dart-sdk $BUILD_DIR
 cp -r $CACHE_DIR/dart-sdk /app
 
 message "-----> Bob"
-pwd
+#pwd
 # app/tmp/cache
-ls
+#ls
 # dart-sdk
-cd dart-sdk
-pwd
-# app/tmp/dart-sdk
-ls
+#cd dart-sdk
+#pwd
+# app/tmp/cache/dart-sdk
+#ls
+# bin etc
 DART_BIN=`ls -l dart-sdk/bin/dart`
 message "-----> Dart cmd found at $DART_BIN"
 message "-----> Bob"
