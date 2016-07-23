@@ -114,9 +114,9 @@ DART_BIN=`ls -l $BUILD_DIR/dart-sdk/bin/dart.exe`
 #DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart.exe`
 message "-----> Dart cmd found at $DART_BIN"
 
-CAN_DART_RUN=`$BUILD_DIR/dart-sdk/bin/dart.exe --version`
+#CAN_DART_RUN=`$BUILD_DIR/dart-sdk/bin/dart.exe --version`
 #CAN_DART_RUN=`/app/tmp/cache/dart-sdk/bin/dart.exe --version`
-message "-----> Dart reports version: $CAN_DART_RUN"
+#message "-----> Dart reports version: $CAN_DART_RUN"
 
 for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
     pub_dir=`dirname $filename`
