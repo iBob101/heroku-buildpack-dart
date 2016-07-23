@@ -90,7 +90,7 @@ message "-----> Bob"
 # app/tmp/cache/dart-sdk
 #ls
 # bin etc
-DART_BIN=`ls -l dart-sdk/bin/dart`
+DART_BIN=`ls -l /dart-sdk/bin/dart`
 message "-----> Dart cmd found at $DART_BIN"
 message "-----> Bob"
 
