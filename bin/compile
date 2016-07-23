@@ -16,7 +16,7 @@ message "       Build dir: $1"
 message "       Cache dir: $2"
 message "       Env-dir:   $3"
 
-message "-----> Current directory: $pwd"
+message "-----> Current directory: $PWD"
 
 message "-----> App directory structure:"
 cd "/app"
