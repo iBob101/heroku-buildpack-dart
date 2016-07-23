@@ -23,8 +23,8 @@ message "-----> Underlying file structure:"
 
 for dir in $PWD/*/
 do
-    dir=${dir%*/}
-    echo "Dir: ${dir##*/}"
+    dir1=${dir%*/}
+    echo "Dir: ${dir1##*/}"
     for file in dir/{.,}*
     do
         echo $file
