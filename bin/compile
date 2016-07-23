@@ -11,7 +11,7 @@ function message {
   sync
 }
 
-LAUNCH_DIR = $PWD
+LAUNCH_DIR=$PWD
 
 message "-----> Parameters passed to compile script:"
 message "       Build dir:  $1"
