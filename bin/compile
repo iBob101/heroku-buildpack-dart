@@ -92,7 +92,8 @@ ls
 # bin etc
 cd bin
 pwd
-ls
+ls dart.exe
+DB=`ls dart.exe`
 DART_BIN=`ls -l app/tmp/cache/dart-sdk/bin/dart.exe`
 message "-----> Dart cmd found at $DART_BIN"
 message "-----> Bob"
