@@ -82,7 +82,8 @@ cp -r $CACHE_DIR/dart-sdk /app
 
 message "-----> Bob"
 pwd
-pwd -P
+# app/tmp/cache
+ls
 message "-----> Bob"
 
 DART_BIN=`ls -l /app/dart-sdk/bin/dart`
