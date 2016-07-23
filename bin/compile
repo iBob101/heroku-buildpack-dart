@@ -19,7 +19,17 @@ message "       Env-dir:   $3"
 message "-----> Current directory: $PWD"
 
 message "-----> Underlying file structure:"
-ls -R | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+#ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+
+for dir in /tmp/*/
+do
+    dir=${dir%*/}
+    echo ${dir##*/}
+    for file in dir
+    do
+        echo $file
+    done
+done
 
 # https://devcenter.heroku.com/articles/buildpack-api
 export_env_dir() {
