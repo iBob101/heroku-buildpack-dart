@@ -81,34 +81,16 @@ cp -r $CACHE_DIR/dart-sdk $BUILD_DIR
 
 cd $BUILD_DIR
 
-message "-----> Build directory file structure:"
-ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
-message "-----> Files:"
-ls -A -R
+#message "-----> Build directory file structure:"
+#ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+#message "-----> Files:"
+#ls -A -R
 
 # we need to copy the sdk into the /app folder in order for the sdk libraries
 # to be referenced correctly
 # reason being that the /tmp folder will be deleted after build, and /app
 # resembles the location of the ready built app
 cp -r $CACHE_DIR/dart-sdk /app
-
-#message "-----> Bob"
-#pwd
-# app/tmp/cache
-#ls
-# dart-sdk
-#cd dart-sdk
-#pwd
-# app/tmp/cache/dart-sdk
-#ls
-# bin etc
-#cd bin
-#pwd
-#ls dart.exe
-#DB=`ls dart.exe`
-#DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart.exe`
-#message "-----> Dart cmd found at $DART_BIN"
-#message "-----> Bob"
 
 #DART_BIN=`ls -l $BUILD_DIR/dart-sdk/bin/dart.exe`
 DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart`
@@ -120,24 +102,25 @@ CAN_DART_RUN=`/app/tmp/cache/dart-sdk/bin/dart --version`
 
 for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
     pub_dir=`dirname $filename`
-    message "*** Found pubspec.yaml in $BUILD_DIR/$pub_dir"
+    message "-----> Found pubspec.yaml in $BUILD_DIR/$pub_dir"
     cd $BUILD_DIR/$pub_dir
 
-    message "*** Running pub get"
+    message "-----> Running pub get"
 
     /app/dart-sdk/bin/pub --version
 
     #start pub from the /app folder to have correct symlink paths
     /app/dart-sdk/bin/pub get
 
-    message "*** Running pub build"
+    message "-----> Running pub build"
 
+    message "      $DART_BUILD_CMD"
     if [[ -z "$DART_BUILD_CMD" ]]
     then
-        message 'Building with "pub build"'
+        message '       Building with "pub build"'
         /app/dart-sdk/bin/pub build
     else
-        message "Building with \"$DART_BUILD_CMD\""
+        message "       Building with \"$DART_BUILD_CMD\""
         eval $DART_BUILD_CMD
     fi
 
