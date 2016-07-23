@@ -19,7 +19,7 @@ message "       Cache dir:  $2"
 message "       Env-dir:    $3"
 
 # https://devcenter.heroku.com/articles/buildpack-api
-export_env_dir() {l
+export_env_dir() {
   env_dir=$1
   message "-----> Contents of ENV_DIR ($env_dir):"
   whitelist_regex=${2:-''}
