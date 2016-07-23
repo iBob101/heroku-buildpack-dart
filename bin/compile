@@ -80,25 +80,25 @@ cp -r $CACHE_DIR/dart-sdk $BUILD_DIR
 # resembles the location of the ready built app
 cp -r $CACHE_DIR/dart-sdk /app
 
-message "-----> Bob"
-pwd
+#message "-----> Bob"
+#pwd
 # app/tmp/cache
-ls
+#ls
 # dart-sdk
-cd dart-sdk
-pwd
+#cd dart-sdk
+#pwd
 # app/tmp/cache/dart-sdk
-ls
+#ls
 # bin etc
-cd bin
-pwd
-ls dart.exe
-DB=`ls dart.exe`
-DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart.exe`
-message "-----> Dart cmd found at $DART_BIN"
-message "-----> Bob"
+#cd bin
+#pwd
+#ls dart.exe
+#DB=`ls dart.exe`
+#DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart.exe`
+#message "-----> Dart cmd found at $DART_BIN"
+#message "-----> Bob"
 
-DART_BIN=`ls -l /app/dart-sdk/bin/dart`
+DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart.exe`
 message "-----> Dart cmd found at $DART_BIN"
 
 CAN_DART_RUN=`/app/dart-sdk/bin/dart --version`
