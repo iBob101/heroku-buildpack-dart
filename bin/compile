@@ -78,11 +78,11 @@ case "${DART_SDK_URL: -3}" in
     ;;
 esac
 
+cd $LAUNCH_DIR
 message "-----> Launch directory: $LAUNCH_DIR"
-
 message "-----> Underlying file structure:"
 ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
-
+message "-----> Files:"
 for dir in $PWD/*/
 do
     for file in dir
@@ -121,7 +121,7 @@ cp -r $CACHE_DIR/dart-sdk /app
 DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart.exe`
 message "-----> Dart cmd found at $DART_BIN"
 
-CAN_DART_RUN=`/app/tmp/cache/dart-sdk/bin/dart --version`
+CAN_DART_RUN=`/app/tmp/cache/dart-sdk/bin/dart.exe --version`
 message "-----> Dart reports version: $CAN_DART_RUN"
 
 cd $BUILD_DIR
