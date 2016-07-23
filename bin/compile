@@ -11,26 +11,15 @@ function message {
   sync
 }
 
+LAUNCH_DIR = $PWD
+
 message "-----> Parameters passed to compile script:"
-message "       Build dir: $1"
-message "       Cache dir: $2"
-message "       Env-dir:   $3"
-
-message "-----> Current directory: $PWD"
-
-message "-----> Underlying file structure:"
-ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
-
-for dir in $PWD/*/
-do
-    for file in dir
-    do
-        echo $file
-    done
-done
+message "       Build dir:  $1"
+message "       Cache dir:  $2"
+message "       Env-dir:    $3"
 
 # https://devcenter.heroku.com/articles/buildpack-api
-export_env_dir() {
+export_env_dir() {l
   env_dir=$1
   message "-----> Contents of ENV_DIR ($env_dir):"
   whitelist_regex=${2:-''}
@@ -88,6 +77,19 @@ case "${DART_SDK_URL: -3}" in
     message "       Invalid Dart SDK URL" #kill after this or keep going in case SDK is there from last push?
     ;;
 esac
+
+message "-----> Launch directory: $LAUNCH_DIR"
+
+message "-----> Underlying file structure:"
+ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+
+for dir in $PWD/*/
+do
+    for file in dir
+    do
+        echo $file
+    done
+done
 
 message "-----> Copy Dart binaries to app root"
 cp -r $CACHE_DIR/dart-sdk $BUILD_DIR
