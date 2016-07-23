@@ -85,7 +85,11 @@ pwd
 # app/tmp/cache
 ls
 # dart-sdk
-DART_BIN=`ls -l /dart-sdk/bin/dart`
+cd dart-sdk
+pwd
+# app/tmp/dart-sdk
+ls
+DART_BIN=`ls -l dart-sdk/bin/dart`
 message "-----> Dart cmd found at $DART_BIN"
 message "-----> Bob"
 
