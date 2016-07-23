@@ -21,7 +21,7 @@ message "-----> Current directory: $PWD"
 message "-----> Underlying file structure:"
 #ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 
-for dir in /tmp/*/
+for dir in $PWD/*/
 do
     dir=${dir%*/}
     echo ${dir##*/}
