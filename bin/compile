@@ -53,8 +53,6 @@ if [ -z "$DART_SDK_URL" ]; then
     exit 1
 fi
 
-cd $BUILD_DIR
-
 message "-----> Installing Dart VM via URL $DART_SDK_URL"
 
 cd $CACHE_DIR
@@ -78,9 +76,12 @@ case "${DART_SDK_URL: -3}" in
     ;;
 esac
 
-cd $LAUNCH_DIR
-message "-----> Launch directory: $LAUNCH_DIR"
-message "-----> Underlying file structure:"
+message "-----> Copy Dart binaries to build directory"
+cp -r $CACHE_DIR/dart-sdk $BUILD_DIR
+
+cd $BUILD_DIR
+
+message "-----> Build directory file structure:"
 ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 message "-----> Files:"
 for dir in $PWD/*/
@@ -90,9 +91,6 @@ do
         echo $file
     done
 done
-
-message "-----> Copy Dart binaries to app root"
-cp -r $CACHE_DIR/dart-sdk $BUILD_DIR
 
 # we need to copy the sdk into the /app folder in order for the sdk libraries
 # to be referenced correctly
@@ -118,13 +116,13 @@ cp -r $CACHE_DIR/dart-sdk /app
 #message "-----> Dart cmd found at $DART_BIN"
 #message "-----> Bob"
 
-DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart.exe`
+DART_BIN=`ls -l $BUILD_DIR/dart-sdk/bin/dart.exe`
+#DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart.exe`
 message "-----> Dart cmd found at $DART_BIN"
 
-CAN_DART_RUN=`/app/tmp/cache/dart-sdk/bin/dart.exe --version`
+CAN_DART_RUN=`$BUILD_DIR/dart-sdk/bin/dart.exe --version`
+#CAN_DART_RUN=`/app/tmp/cache/dart-sdk/bin/dart.exe --version`
 message "-----> Dart reports version: $CAN_DART_RUN"
-
-cd $BUILD_DIR
 
 for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
     pub_dir=`dirname $filename`
