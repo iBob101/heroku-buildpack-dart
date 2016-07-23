@@ -24,8 +24,8 @@ message "-----> Underlying file structure:"
 for dir in $PWD/*/
 do
     dir=${dir%*/}
-    echo ${dir##*/}
-    for file in dir
+    echo "Dir: ${dir##*/}"
+    for file in dir/{.,}*
     do
         echo $file
     done
