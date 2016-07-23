@@ -84,13 +84,7 @@ cd $BUILD_DIR
 message "-----> Build directory file structure:"
 ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 message "-----> Files:"
-for dir in $PWD/*/
-do
-    for file in dir
-    do
-        echo $file
-    done
-done
+ls -A -R
 
 # we need to copy the sdk into the /app folder in order for the sdk libraries
 # to be referenced correctly
