@@ -81,6 +81,7 @@ cp -r $CACHE_DIR/dart-sdk $BUILD_DIR
 cp -r $CACHE_DIR/dart-sdk /app
 
 message "-----> Bob"
+cd $BUILD_DIR
 pwd
 # app/tmp/cache
 ls
