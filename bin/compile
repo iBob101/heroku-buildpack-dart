@@ -110,12 +110,12 @@ cp -r $CACHE_DIR/dart-sdk /app
 #message "-----> Dart cmd found at $DART_BIN"
 #message "-----> Bob"
 
-DART_BIN=`ls -l $BUILD_DIR/dart-sdk/bin/dart.exe`
-#DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart.exe`
+#DART_BIN=`ls -l $BUILD_DIR/dart-sdk/bin/dart.exe`
+DART_BIN=`ls -l /app/tmp/cache/dart-sdk/bin/dart`
 message "-----> Dart cmd found at $DART_BIN"
 
 #CAN_DART_RUN=`$BUILD_DIR/dart-sdk/bin/dart.exe --version`
-#CAN_DART_RUN=`/app/tmp/cache/dart-sdk/bin/dart.exe --version`
+CAN_DART_RUN=`/app/tmp/cache/dart-sdk/bin/dart --version`
 #message "-----> Dart reports version: $CAN_DART_RUN"
 
 for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cache`; do
@@ -125,7 +125,7 @@ for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cach
 
     message "*** Running pub get"
 
-    $BUILD_DIR/dart-sdk/bin/pub --version
+    /app/dart-sdk/bin/pub --version
 
     #start pub from the /app folder to have correct symlink paths
     /app/dart-sdk/bin/pub get
